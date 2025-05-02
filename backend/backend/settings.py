@@ -172,7 +172,7 @@ SIMPLE_JWT = {
 #     "http://localhost:3000",  # Frontend running on localhost (useful for development)
 #     "https://yourfrontenddomain.com",  # Replace with your actual frontend production domain
 # ]
-CORS_ALLOWED_ORIGINS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(' ')
 
 
 # Uncomment this if you want to allow credentials (cookies, HTTP authentication, etc.)
