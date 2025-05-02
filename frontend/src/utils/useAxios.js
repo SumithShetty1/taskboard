@@ -7,7 +7,7 @@ import AuthContext from "../context/AuthContext"; // Importing AuthContext to ma
 
 
 // Base URL for API requests
-const baseURL = "http://127.0.0.1:8000/api";
+const baseURL = process.env.REACT_APP_API_BASE_URL;
 
 // Custom hook to create and manage Axios instance with automatic token handling
 const useAxios = () => {

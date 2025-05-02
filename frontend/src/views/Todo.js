@@ -5,7 +5,7 @@ import Swal from 'sweetalert2' // SweetAlert for displaying notifications
 
 
 function Todo() {
-    const baseUrl = "http://127.0.0.1:8000/api" // Base URL for the API
+    const baseUrl = process.env.REACT_APP_API_BASE_URL // Base URL for the API
     const api = useAxios() // Axios instance
 
     const token = localStorage.getItem("authTokens") // Getting the auth token from localStorage

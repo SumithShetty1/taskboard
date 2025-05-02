@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
 
     // Function to log in a user, sends a POST request with credentials to API
     const loginUser = async (email, password) => {
-        const response = await fetch("http://127.0.0.1:8000/api/token/", {
+        const response = await fetch(process.env.REACT_APP_API_BASE_URL + "/token/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
     // Function to register a new user and then log them in
     const registerUser = async (email, username, password, password2) => {
-        const response = await fetch("http://127.0.0.1:8000/api/register/", {
+        const response = await fetch(process.env.REACT_APP_API_BASE_URL + "/register/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
