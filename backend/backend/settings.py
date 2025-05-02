@@ -187,6 +187,7 @@ CORS_ALLOWED_METHODS = [
     'GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'
 ]
 
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(' ')
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
