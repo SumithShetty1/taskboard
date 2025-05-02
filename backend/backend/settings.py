@@ -162,7 +162,7 @@ SIMPLE_JWT = {
 
 # Only in development - Allow all origins for Cross-Origin Resource Sharing (CORS)
 # This is typically used in development to allow the frontend (e.g., React) to interact with the backend without worrying about CORS restrictions.
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 # In Production - Uncomment and configure this to only allow specific origins
 # When deploying to production, you should restrict CORS to only trusted frontend domains.
@@ -172,19 +172,20 @@ CORS_ALLOW_ALL_ORIGINS = True
 #     "http://localhost:3000",  # Frontend running on localhost (useful for development)
 #     "https://yourfrontenddomain.com",  # Replace with your actual frontend production domain
 # ]
+CORS_ALLOWED_ORIGINS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
 
 
 # Uncomment this if you want to allow credentials (cookies, HTTP authentication, etc.)
 # By default, CORS does not allow credentials (cookies, HTTP headers like Authorization, etc.) to be sent.
 # If you enable this, your frontend and backend must be on the same origin or the frontend must be explicitly allowed.
-# CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Specify which HTTP methods are allowed for cross-origin requests.
 # By default, CORS allows only 'GET' and 'POST' methods. If you want to allow others like 'PUT', 'DELETE', etc., you can define them here.
-# CORS_ALLOWED_METHODS = [
-#     'GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'
-# ]
+CORS_ALLOWED_METHODS = [
+    'GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'
+]
 
 
 # Internationalization
