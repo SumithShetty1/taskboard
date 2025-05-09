@@ -130,7 +130,7 @@ function Registerpage() {
                                                             {isLoading ? (
                                                                 <>
                                                                     <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                                                    {' Processing...'}
+                                                                    {' Creating account...'}
                                                                 </>
                                                             ) : (
                                                                 'Register'

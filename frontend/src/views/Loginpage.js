@@ -105,7 +105,7 @@ function Loginpage() {
                                                             type="submit"
                                                             disabled={isLoading} // Disable button when loading
                                                         >
-                                                            {isLoading ? "Processing..." : "Login"} {/* Change text based on loading state */}
+                                                            {isLoading ? "Logging in..." : "Login"} {/* Change text based on loading state */}
                                                         </button>
                                                     </div>
 
