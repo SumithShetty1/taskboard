@@ -1,20 +1,40 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom' // For linking to other pages (register page)
 import AuthContext from '../context/AuthContext' // Importing AuthContext to use login functionality
+import Swal from 'sweetalert2' // SweetAlert for displaying notifications
 
 
 function Loginpage() {
     // Destructuring the loginUser function from AuthContext
     const { loginUser } = useContext(AuthContext)
+    const [isLoading, setIsLoading] = useState(false)
 
     // Handle form submission
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault() // Prevents default form submission
         const email = e.target.email.value // Get email value from the form input
         const password = e.target.password.value // Get password value from the form input
 
         // If email is provided, call loginUser function with email and password
-        email.length > 0 && loginUser(email, password)
+        if (email.length > 0) {
+            setIsLoading(true) // Set loading to true when login starts
+            try {
+                await loginUser(email, password)
+            } catch (error) {
+                console.error("Login failed:", error)
+                // Display error notification
+                Swal.fire({
+                    title: "Login failed",
+                    icon: "error",
+                    toast: true,
+                    timer: 600,
+                    position: "top-right",
+                    timerProgressBar: true,
+                })
+            } finally {
+                setIsLoading(false) // Set loading to false when done
+            }
+        }
     }
 
     return (
@@ -43,7 +63,7 @@ function Loginpage() {
                                                             <span className="h3 fw-bold mb-0">Welcome back 👋</span>
                                                         </div>
                                                     </div>
-                                                    
+
                                                     {/* Heading */}
                                                     <h4
                                                         className="fw-normal mb-3 pb-3 d-flex justify-content-center"
@@ -83,15 +103,11 @@ function Loginpage() {
                                                         <button
                                                             className="btn btn-dark btn-lg btn-block"
                                                             type="submit"
+                                                            disabled={isLoading} // Disable button when loading
                                                         >
-                                                            Login
+                                                            {isLoading ? "Processing..." : "Login"} {/* Change text based on loading state */}
                                                         </button>
                                                     </div>
-
-                                                    {/* Forgot password link */}
-                                                    <a className="mb-2 pb-lg-2 d-flex justify-content-center" href="#!">
-                                                        Forgot password?
-                                                    </a>
 
                                                     {/* Registration link */}
                                                     <p className="mb-5 pb-lg-2 text-center" style={{ color: "#393f81" }}>
@@ -119,7 +135,7 @@ function Loginpage() {
                         </div>
                     </div>
                 </section>
-                
+
                 {/* Footer section */}
                 <footer className="bg-light text-center text-lg-start">
                     <div

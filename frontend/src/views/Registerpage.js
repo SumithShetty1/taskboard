@@ -10,6 +10,7 @@ function Registerpage() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     // Extracting the registerUser function from the AuthContext
     const { registerUser } = useContext(AuthContext)
@@ -18,18 +19,34 @@ function Registerpage() {
     const handleSubmit = async e => {
         e.preventDefault()
         // Calling registerUser function passed from AuthContext
-        registerUser(email, username, password, password2)
+        setIsLoading(true) // Set loading to true when registration starts
+        try {
+            await registerUser(email, username, password, password2)
+        } catch (error) {
+            console.error("Registration failed:", error)
+            // Display error notification
+            Swal.fire({
+                title: "Registration failed",
+                icon: "error",
+                toast: true,
+                timer: 600,
+                position: "top-right",
+                timerProgressBar: true,
+            })
+        } finally {
+            setIsLoading(false) // Set loading to false when done
+        }
     }
 
     return (
         <div>
             <>
-            {/* Registration page layout */}
-            <section style={{ backgroundColor: "#9A616D"}}>
+                {/* Registration page layout */}
+                <section style={{ backgroundColor: "#9A616D" }}>
                     <div className="container h-100" style={{ paddingTop: "70px", paddingBottom: "50px" }}>
                         <div className="row d-flex justify-content-center align-items-center h-100">
                             <div className="col col-xl-10">
-                                <div className="card" style={{ borderRadius: "1rem"}}>
+                                <div className="card" style={{ borderRadius: "1rem" }}>
                                     <div className="row justify-content-center">
                                         <div className="col-md-6 col-lg-7 d-flex align-items-center">
                                             <div className="card-body p-4 p-lg-5 text-black">
@@ -45,7 +62,7 @@ function Registerpage() {
                                                             Welcome to <b>TaskBoard 👋</b>
                                                         </span>
                                                     </div>
-                                                    
+
                                                     {/* Sign Up Title */}
                                                     <h4
                                                         className="fw-normal mb-3 pb-3 d-flex justify-content-center"
@@ -53,7 +70,7 @@ function Registerpage() {
                                                     >
                                                         Sign Up
                                                     </h4>
-                                                    
+
                                                     {/* Email input field */}
                                                     <div className="form-outline mb-4">
                                                         <input
@@ -107,16 +124,19 @@ function Registerpage() {
                                                         <button
                                                             className="btn btn-dark btn-lg btn-block"
                                                             type="submit"
+                                                            disabled={isLoading} // Disable button when loading
                                                         >
-                                                            Register
+                                                            {isLoading ? (
+                                                                <>
+                                                                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                                    {' Processing...'}
+                                                                </>
+                                                            ) : (
+                                                                'Register'
+                                                            )}
                                                         </button>
                                                     </div>
 
-                                                    {/* Link to Forgot Password */}
-                                                    <a className="mb-2 pb-lg-2 d-flex justify-content-center" href="#!">
-                                                        Forgot password?
-                                                    </a>
-                                                    
                                                     {/* Link to Login page if the user already has an account */}
                                                     <p className="mb-5 pb-lg-2 text-center" style={{ color: "#393f81" }}>
                                                         Already have an account?{" "}
@@ -124,7 +144,7 @@ function Registerpage() {
                                                             Login Now
                                                         </Link>
                                                     </p>
-                                                    
+
                                                     {/* Terms and Privacy policy links */}
                                                     <div className=' d-flex justify-content-center'>
                                                         <a href="#!" className="small text-muted">
