@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom' // For linking to other pages (register page)
 import AuthContext from '../context/AuthContext' // Importing AuthContext to use login functionality
 import Swal from 'sweetalert2' // SweetAlert for displaying notifications
