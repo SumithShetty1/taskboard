@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react' // Importing React hooks for state and context
 import { Link } from 'react-router-dom' // Importing Link for navigation between pages
 import AuthContext from '../context/AuthContext' // Importing the authentication context
+import Swal from 'sweetalert2' // SweetAlert for displaying notifications
 
 
 function Registerpage() {
