@@ -122,7 +122,7 @@ python manage.py migrate
 ### Superuser:
 ```bash
 Email: admin@gmail.com  
-Password: admin1*
+Password: admin123
 ```
 
 
