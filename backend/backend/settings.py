@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,7 +38,6 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
 
 # Application definition
-
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'jazzmin',   # Custom admin interface for Django
@@ -189,6 +191,13 @@ CORS_ALLOWED_METHODS = [
     'GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'
 ]
 
+# CSRF (Cross-Site Request Forgery) Trusted Origins
+# This setting defines which origins are allowed to make POST requests with CSRF tokens
+# Format should be a list of strings in the form: ["https://domain.com", "http://localhost:3000"]
+
+# Get the value from environment variable 'CSRF_TRUSTED_ORIGINS'
+# If the variable doesn't exist, default to an empty string ('')
+# Then split the string by spaces to create a list of allowed origins
 CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(' ')
 
 # Internationalization

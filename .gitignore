@@ -2,6 +2,7 @@
 
 # virtual environment
 /env
+.env
 
 # dependencies
 /frontend/node_modules
