@@ -18,7 +18,7 @@
 - **Authentication**: Django REST Framework with JWT for secure user authentication
 - **API**: RESTful API built using Django REST Framework
 - **Backend**: Django (Python)
-- **Database**: SQLite
+- **Database**: PostgreSQL (production), SQLite (fallback)
 - **Deployment**: Vercel (Frontend), Render (Backend)
 
 This project showcases the integration of Django with modern web technologies to deliver a reliable and scalable task management solution. TaskBoard is designed to enhance productivity by offering a simple yet powerful tool for task organization and tracking.
