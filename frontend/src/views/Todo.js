@@ -22,7 +22,6 @@ function Todo() {
     // Function to fetch all todos from the API
     const fetchTodos = async () => {
         await api.get(baseUrl + '/todo/' + user_id + '/').then((res) => {
-            console.log(res.data);
             setTodo(res.data) // Updating state with fetched todos
         })
     }
@@ -37,8 +36,6 @@ function Todo() {
         })
     }
 
-    console.log(createTodo.title); // Logging the current todo title input
-
     // Function to submit new todo to the API
     const formSubmit = () => {
         const formdata = new FormData()
@@ -50,7 +47,6 @@ function Todo() {
         try {
             // Sending POST request to add new todo
             api.post(baseUrl + '/todo/' + user_id + '/', formdata).then((res) => {
-                console.log(res.data);
                 // Display success notification
                 Swal.fire({
                     title: "Todo Added",

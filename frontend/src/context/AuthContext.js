@@ -46,7 +46,6 @@ export const AuthProvider = ({ children }) => {
         })
 
         const data = await response.json();
-        console.log(data);
 
         if (response.status === 200) { // If login is successful
             setAuthTokens(data) // Store tokens
