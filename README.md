@@ -175,3 +175,7 @@ To start the servers for both the frontend and backend, follow these steps:
     ```
 
 This will start both the Django backend server and the React frontend development server.
+
+
+## Disclaimer
+This project is a personal/portfolio project created for educational and demonstration purposes. It is not affiliated with or endorsed by any existing company or product that may share a similar name.
